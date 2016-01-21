@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <div class="content">
+        <h1>
+            {% if prediction %} <br>
+            OMG It is a {{ prediction }}.
+            {% else %}
+                Please fill out the form below! 
+            {% endif %}
+        </h1>
+    </div>
+
+    {% block page_content %}
+    <div class="content">
+        <form method="POST">
+            {{ train_form.n_neighb.label }} {{ train_form.n_neighb() }} <br>
+            {{ train_form.param_2.label }} {{ train_form.param_2() }} <br>
+            {{ train_form.param_3.label }} {{ train_form.param_3() }} <br>
+            {{ train_form.param_4.label }} {{ train_form.param_4() }} <br> <br>
+            {{ train_form.submit() }}
+        </form>
+    </div>
+    <div class="content">
+        <form method="POST">
+            {{ predict_form.sepal_length.label }} {{ predict_form.sepal_length() }} <br>
+            {{ predict_form.sepal_width.label }} {{ predict_form.sepal_width() }} <br>
+            {{ predict_form.petal_length.label }} {{ predict_form.petal_length() }} <br>
+            {{ predict_form.petal_width.label }} {{ predict_form.petal_width() }} <br> <br>
+            {{ predict_form.submit() }}
+        </form>
+    </div>
+    {% endblock %}
+
+{% endblock %}
